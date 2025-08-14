@@ -56,18 +56,25 @@ counters.MapGet("/lessthan/{number}", (int number) =>
 //return the counter you have increased
 counters.MapPost("/increment/{id}", (int id) => 
 {
-    var counter = CounterHelper.Counters.FirstOrDefault(c => c.Id == id);
-   
-    counter.Value++;
-    return TypedResults.Ok(counter);
+    var entity = CounterHelper.Counters.FirstOrDefault(c => c.Id == id);
+    
+    entity.Value++;
+    return TypedResults.Ok(entity);
     
 });
-
 
 //Extension #2
 //TODO: 2. Write a controller method that decrements the Value property of a counter of any given Id.
 //e.g.  with an Id=1  the Books counter Value should be decreased from 5 to 4
 //return the counter you have decreased
+counters.MapPost("/decrement/{id}", (int id) =>
+{
+    var counter = CounterHelper.Counters.FirstOrDefault(c => c.Id == id);
+
+    counter.Value--;
+    return TypedResults.Ok(counter);
+
+});
 
 //Super Optional Extension #1 - Refactor the code!
 // - move the EndPoints into their own class and ensure they are mapped correctly
