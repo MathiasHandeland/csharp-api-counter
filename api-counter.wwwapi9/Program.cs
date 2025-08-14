@@ -35,16 +35,20 @@ counters.MapGet("/", () =>
 //TODO: 2. write a method to return a single counter based on the id being passed in.  complete method below
 counters.MapGet("/{id}", (int id) =>
 {
-    return TypedResults.Ok(CounterHelper.Counters.FirstOrDefault(b => b.Id == id));
+    return TypedResults.Ok(CounterHelper.Counters.FirstOrDefault(c => c.Id == id));
 });
 
 //TODO: 3.  write another method that returns counters that have a value greater than the {number} passed in.        
 counters.MapGet("/greaterthan/{number}", (int number) =>
 {
-    return TypedResults.Ok(CounterHelper.Counters.FindAll(b => b.Value > number));
+    return TypedResults.Ok(CounterHelper.Counters.FindAll(c => c.Value > number));
 });
 
 ////TODO:4. write another method that returns counters that have a value less than the {number} passed in.
+counters.MapGet("/lessthan/{number}", (int number) =>
+{
+    return TypedResults.Ok(CounterHelper.Counters.FindAll(c => c.Value < number));
+});
 
 //Extension #1
 //TODO:  1. Write a controller method that increments the Value property of a counter of any given Id.
