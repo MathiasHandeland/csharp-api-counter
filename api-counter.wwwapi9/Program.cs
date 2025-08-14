@@ -76,9 +76,16 @@ counters.MapPost("/decrement/{id}", (int id) =>
 
 });
 
+
 //Super Optional Extension #1 - Refactor the code!
-// - move the EndPoints into their own class and ensure they are mapped correctly
-// - add a repository layer: interface & concrete class, inject this into the endpoint using the builder.Service
+// Refactor - move the EndPoints into their own class and ensure they are mapped correctly
+// Refactor - add a repository layer: interface & concrete class, inject this into the endpoint using the builder.Service
+
+//Super Optional Extension #2
+//Create a new endpoint that passes a json collection of strings to a controller method and adds them as new Counters with an appropriate unique integer id AND a value of 0.
+
+
+
 
 
 app.Run();
