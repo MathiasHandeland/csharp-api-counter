@@ -35,13 +35,13 @@ counters.MapGet("/", () =>
 //TODO: 2. write a method to return a single counter based on the id being passed in.  complete method below
 counters.MapGet("/{id}", (int id) =>
 {
-    return TypedResults.Ok(id);
+    return TypedResults.Ok(CounterHelper.Counters.FirstOrDefault(b => b.Id == id));
 });
 
 //TODO: 3.  write another method that returns counters that have a value greater than the {number} passed in.        
 counters.MapGet("/greaterthan/{number}", (int number) =>
 {
-    return TypedResults.Ok(number);
+    return TypedResults.Ok(CounterHelper.Counters.FindAll(b => b.Value > number));
 });
 
 ////TODO:4. write another method that returns counters that have a value less than the {number} passed in.
